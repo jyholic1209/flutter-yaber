@@ -109,4 +109,29 @@ class AuthController extends GetxController {
   Future<void> signOut() async {
     await _auth.signOut();
   }
+
+  // 임시 비밀번호 보내기
+  Future<String> sendTempPassword({required String email}) async {
+    String res = 'send temp password';
+    try {
+      var result = await _auth.fetchSignInMethodsForEmail(email);
+      if (result.isNotEmpty) {
+        try {
+          await _auth.sendPasswordResetEmail(email: email);
+          res = 'success';
+        } on FirebaseAuthException catch (e) {
+          res = e.message.toString();
+        } catch (e) {
+          res = e.toString();
+        }
+      } else {
+        res = 'no result';
+      }
+    } on FirebaseAuthException catch (e) {
+      res = e.message.toString();
+    } catch (e) {
+      res = e.toString();
+    }
+    return res;
+  }
 }

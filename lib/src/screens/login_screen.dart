@@ -104,7 +104,7 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   TextButton(
                       onPressed: () {
-                        // TODO: find password
+                        _showConfirmDialog(context);
                       },
                       child: Text(
                         '비밀번호 찾기',
@@ -124,6 +124,62 @@ class LoginScreen extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Future<dynamic> _showConfirmDialog(BuildContext context) {
+    final TextEditingController tmpEmailController = TextEditingController();
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          content: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text('Find Password'),
+              const SizedBox(height: 10),
+              TextField(
+                controller: tmpEmailController,
+                decoration: const InputDecoration(
+                  labelText: 'Please enter your email',
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide(style: BorderStyle.solid)),
+                ),
+              ),
+              const SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () async {
+                      await AuthController.to
+                          .sendTempPassword(email: tmpEmailController.text)
+                          .then((value) {
+                        if (value == 'success') {
+                          showSnackBar(context, '비밀번호가 발송되었습니다.');
+                        } else {
+                          showSnackBar(context, value);
+                        }
+                      });
+                      tmpEmailController.clear();
+                      Get.back();
+                    },
+                    child: const Text('send'),
+                  ),
+                  const SizedBox(width: 30),
+                  ElevatedButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    child: const Text('cancel'),
+                  ),
+                ],
+              )
+            ],
+          ),
+        );
+      },
     );
   }
 }

@@ -5,7 +5,6 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:intl/intl.dart';
 
 YbUser ybUserFromJson(String str) => YbUser.fromJson(json.decode(str));
 
