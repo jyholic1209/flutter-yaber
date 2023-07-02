@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1012580107522",
+    "project_id": "flutter-yaber-test",
+    "storage_bucket": "flutter-yaber-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1012580107522:android:148a57c2f3067fe044ee1b",
+        "android_client_info": {
+          "package_name": "com.example.flutter_yaber"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1012580107522-7km10sh29op7o3v9uheff4gqdrlbfg6l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEUpBWKlOyCs1C4TOSre5mO1k5a10Eeu8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1012580107522-7km10sh29op7o3v9uheff4gqdrlbfg6l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
