@@ -28,7 +28,6 @@ class _SignupInfoScreenState extends State<SignupInfoScreen> {
   final TextEditingController _nationalityController = TextEditingController();
   final int nameLength = 16;
   File? profile;
-  bool isLoading = false;
 
   Widget _myProfile() {
     const double profileSize = 100;
