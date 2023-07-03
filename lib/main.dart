@@ -5,6 +5,7 @@ import 'package:flutter_yaber/firebase_options.dart';
 import 'package:flutter_yaber/src/controller/init_binding.dart';
 import 'package:flutter_yaber/src/screens/feed_screen.dart';
 import 'package:flutter_yaber/src/screens/login_screen.dart';
+import 'package:flutter_yaber/src/screens/navigation_screen.dart';
 import 'package:get/get.dart';
 
 void main() async {
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.active) {
             if (snapshot.hasData) {
               // 1. auth 정상
-              return FeedScreen();
+              return const NavigationScreen();
               // 2. auth 에러
             } else if (snapshot.hasError) {
               return Scaffold(

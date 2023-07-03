@@ -7,9 +7,9 @@ import 'package:get/get.dart';
 class FeedScreen extends StatelessWidget {
   FeedScreen({Key? key}) : super(key: key);
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final authUser = AuthController.to.authUser;
   @override
   Widget build(BuildContext context) {
-    final auth = AuthController.to.authUser;
     return Scaffold(
       appBar: AppBar(
         title: Text(_auth.currentUser!.email!),
@@ -25,12 +25,12 @@ class FeedScreen extends StatelessWidget {
       ),
       body: Center(
         child: Column(children: [
-          Text(auth!.uid!),
-          Text(auth.username!),
-          Text(auth.email!),
-          Text(auth.profile!),
-          Text(auth.createAt.toString()),
-          Text(auth.updateAt.toString()),
+          Text(authUser!.uid!),
+          Text(authUser!.username!),
+          Text(authUser!.email!),
+          Text(authUser!.profile!),
+          Text(authUser!.createAt.toString()),
+          Text(authUser!.updateAt.toString()),
         ]),
       ),
     );
