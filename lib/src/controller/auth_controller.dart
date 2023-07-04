@@ -15,21 +15,24 @@ class AuthController extends GetxController {
   YbUser? authUser;
 
   @override
-  void onInit() {
+  void onInit() async {
+    await checkLogin();
     super.onInit();
-    _checkLogin();
+    print('auth controller init');
   }
 
-  _checkLogin() async {
+  checkLogin() async {
     if (_auth.currentUser != null) {
-      authUser = await _findUser(_auth.currentUser!);
+      authUser = (await _findUser(_auth.currentUser!.uid))!;
+      print('authUser find : ${authUser!.username}');
     }
   }
 
-  Future<YbUser?> _findUser(User user) async {
+  Future<YbUser?> _findUser(String uid) async {
     try {
       DocumentSnapshot snap =
-          await _firestore.collection('users').doc(user.uid).get();
+          await _firestore.collection('users').doc(uid).get();
+
       return YbUser.formSnap(snap);
       // return YbUser.fromJson(snap.data() as Map<String, dynamic>);
     } on Exception catch (e) {
@@ -43,12 +46,13 @@ class AuthController extends GetxController {
     required String password,
   }) async {
     String res = 'login';
+
     try {
       if (email.isNotEmpty || password.isNotEmpty) {
         UserCredential cred = await _auth.signInWithEmailAndPassword(
             email: email, password: password);
         if (cred.user != null) {
-          authUser = await _findUser(cred.user!);
+          authUser = await _findUser(cred.user!.uid);
           if (authUser != null) {
             res = 'success';
           }

@@ -41,3 +41,7 @@ pickMultiImage() async {
   }
   return null;
 }
+
+Widget waiting = const Center(
+  child: CircularProgressIndicator(),
+);

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_yaber/src/controller/auth_controller.dart';
 import 'package:flutter_yaber/src/page_components/input_form.dart';
-import 'package:flutter_yaber/src/screens/feed_screen.dart';
 import 'package:flutter_yaber/src/screens/navigation_screen.dart';
 import 'package:flutter_yaber/src/screens/signup_screen.dart';
 import 'package:flutter_yaber/src/utils/util.dart';

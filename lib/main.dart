@@ -3,7 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_yaber/firebase_options.dart';
 import 'package:flutter_yaber/src/controller/init_binding.dart';
-import 'package:flutter_yaber/src/screens/feed_screen.dart';
+import 'package:flutter_yaber/src/screens/home/home_feed_screen.dart';
 import 'package:flutter_yaber/src/screens/login_screen.dart';
 import 'package:flutter_yaber/src/screens/navigation_screen.dart';
 import 'package:get/get.dart';
